@@ -1,16 +1,19 @@
 class Transfer
-  attr_accessor :sender, :receiver, :amount, :status
-  def initialize(sender, receiver, amount)
-    @sender = sender
-    @receiver = receiver
-    @status = "pending"
-    @amount = 50
-  end 
-  
-  def valid? 
-    self.sender.valid? && self.receiver.valid? 
-  end 
-  
+  # your code here
+
+	attr_accessor :sender, :receiver, :amount, :status
+
+  def initialize(sender, receiver, transfer_amount)
+  	@sender = sender
+  	@receiver = receiver
+  	@amount = transfer_amount
+  	@status = "pending"
+  end
+
+  def valid?
+  	self.sender.valid? && self.receiver.valid?
+  end
+
   def execute_transaction
   	if self.valid? && self.sender.balance > self.amount && self.status == "pending"
 	  	self.sender.balance -= self.amount
@@ -31,4 +34,5 @@ class Transfer
 
   	end
   end
+
 end
